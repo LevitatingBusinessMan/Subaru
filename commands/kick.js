@@ -19,7 +19,7 @@ module.exports = {
 			//Time to kick :3
 			user.kick(args.slice(1).join(" ") + " by " + author[0].user.tag).then(foo => {
 			if (message.guild.members.array().filter(x => x.id == user.id)[0]) Subaru.respond(message, "Something might've gone wrong :v");
-			else Subaru.respond(message, "Succes!");
+			else Subaru.respond(message, `Kicked **${user.displayName}**!`);
 			});
 		} catch (err) {
 			message.channel.send('An error occured :v');

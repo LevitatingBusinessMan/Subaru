@@ -30,8 +30,8 @@ module.exports = {
 				if (i < 25) embed.fields.push(field); else embed2.fields.push(field);
 				i++;
 			}
-			Subaru.respond(message, {embed});
-			Subaru.respond(message, {embed: embed2});
+			Subaru.respond(message, {embed}).then(x => x.addDestructor(message.author.id));
+			Subaru.respond(message, {embed: embed2}).then(x => x.addDestructor(message.author.id));
 		} catch (err) {
 			message.channel.send('An error occured :v');
 			Subaru.error(err, message);
