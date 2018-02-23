@@ -1,0 +1,26 @@
+{
+  "name": "Subaru",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.17.1",
+    "chalk": "^2.3.0",
+    "cli-spinner": "^0.2.7",
+    "discord.js": "^11.3.0",
+    "enmap": "^0.4.2",
+    "enmap-level": "^1.0.0",
+    "fs-extra": "^5.0.0",
+    "google-translate-api": "^2.3.0",
+    "npm-module-search": "^2.0.0",
+    "pouchdb-find": "^6.4.3",
+    "require-reload": "^0.2.2",
+    "string-similarity": "^1.2.0"
+  }
+}
