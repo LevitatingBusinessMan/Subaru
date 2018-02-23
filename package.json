@@ -19,7 +19,6 @@
     "fs-extra": "^5.0.0",
     "google-translate-api": "^2.3.0",
     "npm-module-search": "^2.0.0",
-    "pouchdb-find": "^6.4.3",
     "require-reload": "^0.2.2",
     "string-similarity": "^1.2.0"
   }
