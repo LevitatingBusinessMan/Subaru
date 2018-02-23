@@ -2,7 +2,10 @@ module.exports = (Subaru) => {
 	//Here you can easily create shortcuts to do certain things
 	try {
 		Subaru.log = require('./logger.js');
-		Subaru.error = (err, message) => { if (message)Subaru.log('err', `trigger: ${message.content} \n ${err}\nat ${err.stack}`); else Subaru.log('err', `${err}\nat ${err.stack} \n`);}
+				
+		Subaru.error = (err, message) => { if (message)Subaru.log('err', `trigger: ${message.content} \n ${err}\nat ${err.stack}`); 
+		else Subaru.log('err', `${err}\nat ${err.stack} \n`);}
+				
 		Subaru.respond = async (message, msg) => {
 			return new Promise((resolve,reject) => { 
 			message.channel.send(msg)
@@ -17,7 +20,7 @@ module.exports = (Subaru) => {
 			.catch(err => {Subaru.log('warn', "At: " + message.content + '\n' + err); message.channel.send('An error occured :v'); reject(err);})
 			});
 		}
-			
+		
 		Subaru.formatDate = (date, format) => {
 			let year = date.getFullYear();
 			let month = ((date.getMonth() + 1).toString().length == 1 ? '0' + (date.getMonth() + 1).toString() : (date.getMonth() + 1).toString());;
@@ -28,6 +31,7 @@ module.exports = (Subaru) => {
 			
 			return format.replace("yy", year).replace("mm", month).replace("dd", day).replace("hh", hour).replace("mi", minute).replace("ss", seconds);
 		}
+		
 		Subaru.getUser = (user, collection) => {
 			let str_sim = require('string-similarity');
 			if (!collection.get(user.replace('<@', "").replace('!',"").replace('>', ""))) {
@@ -38,6 +42,7 @@ module.exports = (Subaru) => {
 				return collection.get(user.replace('<@', "").replace('!',"").replace('>', ""));
 			}
 		}
+		
 		Subaru.newUser = (user) => {
 			return new Promise(resolve => {
 			var doc = {
@@ -55,8 +60,13 @@ module.exports = (Subaru) => {
 			if (!Subaru.USERS.get(user.id)) resolve(Subaru.USERS.setAsync(user.id, doc))
 				.catch(err => {Subaru.log('err', 'Error adding user to DB: \n' + err);resolve('Error!');});
 			else resolve(Subaru.USERS);
-		});
+		});}
+		
+		//Shamelessly stolen from Paradox
+		Subaru.sleep = (ms) => {
+			return new Promise(resolve => setTimeout(resolve, ms));
 		}
+		
 	} catch (err) {
 		console.log(err);
 	}
