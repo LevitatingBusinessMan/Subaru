@@ -53,7 +53,7 @@ module.exports = {
 					value: "\`" + Subaru.config.prefix + command.usage + "\`"
 				}]
 			};
-			if (command.detailedDescription) embed.fields.push({name: 'Description', value: command.detailedDescription});
+			if (command.detailedDescription) embed.fields.push({name: 'Description', value: command.detailedDescription.replace(/prefix./g, Subaru.config.prefix)});
 			if (command.alias) embed.fields.push({name: 'Aliases:', value: command.alias.join(', ')})
 			Subaru.respond(message, {embed});
 		}
