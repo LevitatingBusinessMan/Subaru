@@ -59,7 +59,7 @@
 					value: Subaru.formatDate(user.joinedAt, "dd/mm/yy"),
 					inline: true
 				},{
-					name: "Precense:",
+					name: "Presence:",
 					value: (user.presence.game ? (
 							user.presence.game.type==0 ? "Playing " +  user.presence.game.name + ", " : (
 							user.presence.game.type==1 ? "Streaming " +  user.presence.game.name + ", " : (
