@@ -38,6 +38,10 @@ module.exports = {
 					value: Subaru.packagejson.version,
 					inline: true
 				},{
+					name: "Discord.js:",
+					value: require('../node_modules/discord.js/package.json').version,
+					inline: true
+				},{
 					name: "Joined guild:",
 					value: Subaru.formatDate( message.guild.joinedAt, "dd/mm/yy"),
 					inline: true
