@@ -25,7 +25,7 @@
 				title: user.user.tag + (message.guild.owner == user ? ":crown:" : ""),
 				description: user.user.id,
 				color: user.displayColor,
-				thumbnail: {url:user.user.avatarURL},
+				thumbnail: {url:(user.user.avatarURL ? user.user.avatarURL : "https://i.imgur.com/vBhr8fQ.png")},
 				fields:[{
 					name: "Bio:",
 					value: (!bio ? 'none' : bio),
