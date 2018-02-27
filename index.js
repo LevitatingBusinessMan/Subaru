@@ -25,6 +25,9 @@ Subaru.GUILDS = new Enmap({ provider: guildsLeveldb });
 //Create map for destructors
 Subaru.destructors = new Map();
 
+//Create map for messages that weren't commands
+Subaru.editMessages = new Map();
+
 const init = async (callback) => {
 await Subaru.USERS.defer;
 await Subaru.GUILDS.defer;

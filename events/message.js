@@ -44,6 +44,8 @@ module.exports = {
 				cmd.run(Subaru, client, args, message);
 			});
 		} else if (Subaru.cmd[command]){Subaru.respond(message, "This command is disabled.")}
+		//Add to messages that werent commands
+		else Subaru.editMessages.set(message.id, message.content + ' - ' + message.author.username);
 		
 		} catch (err) {
 			Subaru.error(err, message);
