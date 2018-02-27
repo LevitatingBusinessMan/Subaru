@@ -42,6 +42,10 @@ module.exports = {
 					value: require('../node_modules/discord.js/package.json').version,
 					inline: true
 				},{
+					name: "Dependencies:",
+					value: (() => {let count = 0; for (var property in Subaru.packagejson) count++; return count})(),
+					inline:true
+				},{
 					name: "Joined guild:",
 					value: Subaru.formatDate( message.guild.joinedAt, "dd/mm/yy"),
 					inline: true
