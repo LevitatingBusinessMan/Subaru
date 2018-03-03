@@ -54,18 +54,19 @@ module.exports = {
 					timestamp: new Date()}
 			});
 			
-			function getIcon(){
-				return (result.icon == 'clear-day'? ':city_sunset:':
-				(result.icon == 'clear-night'? ':night_with_stars:':
-				(result.icon == 'rain'? ':cloud_rain:':
-				(result.icon == 'snow'? ':cloud_snow:':
-				(result.icon == 'snow'? ':cloud_rain:':
-				(result.icon == 'wind'? ':dash:':
-				(result.icon == 'fog'? ':foggy:':
-				(result.icon == 'cloudy'? ':cloud:':
-				(result.icon == 'partly-cloudy-day'? ':white_sun_small_cloud:':
-				(result.icon == 'partly-cloudy-night'? ':night_with_stars:': ''))))))))));
+			function getIcon() {
+				switch (result.icon) {
+					case 'clear-night': return ':city_sunset:';
+					case 'rain': return ':cloud_rain:';
+					case 'snow': return ':cloud_snow:';
+					case 'wind': return ':dash:';
+					case 'fog': return ':foggy:';
+					case 'cloudy': return ':cloud:';
+					case 'partly-cloudy-day': return ':white_sun_small_cloud:';
+					case 'partly-cloudy-night': return ':night_with_stars:';
+				}
 			}
+			
 		} catch (err) {
 			message.channel.send('An error occured :v');
 			Subaru.error(err, message);
