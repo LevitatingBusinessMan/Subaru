@@ -28,6 +28,7 @@ module.exports = {
 			Subaru.respond(message, ('┬─┬ ノ( ゜-゜ノ) \n').repeat(count));
 		}
 		
+		if (!message.guild) return;
 		let prefix = (Subaru.GUILDS.get(message.guild.id).prefix ? Subaru.GUILDS.get(message.guild.id).prefix  : Subaru.config.prefix);
 		if (!message.content.startsWith(prefix) && !message.content.startsWith('<@' + client.user.id + '>')) return;
 		
