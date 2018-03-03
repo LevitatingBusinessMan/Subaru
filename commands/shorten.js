@@ -3,9 +3,9 @@ module.exports = {
 	catagory: 'Utility',
 	description: 'Takes a URL as input, and shortens it',
 	usage:'shorten https://github.com bit.ly',
-	detailedDescription : '`prefix.shorten https://google.com goo.gl` will create a goo.gl link.\n' +
-						'`prefix.shorten https://google.com bit.ly` will create a bit.ly link.\n' +
-						'`prefix.shorten https://goo.gl/SsAhv -unshorten` will unshorten the link.',
+	detailedDescription : `\`prefix.shorten https://google.com goo.gl\` will create a goo.gl link
+\`prefix.shorten https://google.com bit.ly\` will create a bit.ly link.
+\`prefix.shorten https://goo.gl/SsAhv -unshorten\` will unshorten the link.`,
 	require : ["bitlyApiKey", "bitlyApiLogin" , "googleShortenerApiKey"],
 	
 	run : async (Subaru, client, args, message) => {

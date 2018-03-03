@@ -3,9 +3,9 @@ module.exports = {
 	catagory: 'General',
 	description: 'Assign an autorole to yourself',
 	usage: 'iam gay',
-	detailedDescription: '\`prefix.iam -add [role]\` to add an autorole to the server(admin) \n '+
-						'\`prefix.iam -remove [role]\` to remove an autorole to the server (admin) \n ' +
-						'\`prefix.iam -iamnot [role]\` to remove an autorole from yourself\n ',
+	detailedDescription: `\`prefix.iam -add [role]\` to add an autorole to the server(admin)
+\`prefix.iam -remove [role]\` to remove an autorole to the server (admin)
+\`prefix.iam -iamnot [role]\` to remove an autorole from yourself`,
 	
 	run : async (Subaru, client, args, message) => {
 		try {

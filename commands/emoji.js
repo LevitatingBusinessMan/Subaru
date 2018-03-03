@@ -2,15 +2,15 @@ module.exports = {
 	name: 'emoji',
 	catagory: 'Moderation',
 	description:'Big multipurpose command',
-	detailedDescription: 'This command can do 3 things\n' +
-						'**See a custom emojis info**\n' +
-						`\`prefix.emoji :customEmoji:\`` +
-						'**\nCreate a new emoji**\n' +
-						`\`prefix.emoji -create emojiName url reason\`` +
-						'**\nAdd a role restriction to an emoji**\n' +
-						`\`prefix.emoji -addRole nameOfEmoji1,nameOfEmoji2 role1,role2\`` +
-						'**\nRemove a role restriction to an emoji**\n' +
-						`\`prefix.emoji -removeRole nameOfEmoji1,nameOfEmoji2 role1,role2\n\``,
+	detailedDescription: `This command can do 3 things
+**See a custom emojis info**
+\`prefix.emoji :customEmoji:\`
+**\nCreate a new emoji**
+\`prefix.emoji -create emojiName url reason\`
+**\nAdd a role restriction to an emoji**
+\`prefix.emoji -addRole nameOfEmoji1,nameOfEmoji2 role1,role2\`
+**\nRemove a role restriction to an emoji**
+\`prefix.emoji -removeRole nameOfEmoji1,nameOfEmoji2 role1,role2\``,
 	usage: 'emoji :customEmoji:',
 	//if anyone is going through this that isn't me, bare with me this command is awfull.
 	run : async (Subaru, client, args, message) => {

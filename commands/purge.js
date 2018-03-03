@@ -3,11 +3,11 @@ module.exports = {
 	catagory: 'Moderation',
 	description: 'Remove messages from a channel',
 	usage: 'purge 100',
-	detailedDescription:'Parameters: \n `-bot` to delete messages from bots only \n' +
-						'`-u [user]` to delete messages from a specific user \n' +
-						'`-from [messagesID]` to delete all messages that came after this messages\n' + 
-						'Example: `prefix.purge 20 -u AnnoyingSpammer`\n' +
-						'Note: this will delete up to 20 messages of the last 100',
+	detailedDescription:`Parameters: \n \`-bot\` to delete messages from bots only
+\`-u [user]\` to delete messages from a specific user
+\`-from [messagesID]\` to delete all messages that came after this messages
+Example: \`prefix.purge 20 -u AnnoyingSpammer\`
+Note: this will delete up to 20 messages of the last 100`,
 	
 	run : async (Subaru, client, args, message) => {
 		try {
