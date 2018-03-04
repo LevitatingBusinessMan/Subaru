@@ -13,7 +13,7 @@ module.exports = {
 			if (!message.guild.voiceConnection) message.member.voiceChannel.join();
 			
 			yt.getInfo(args[0], (err, info) => {
-				if(err) {Subaru.respond(message, 'That\'s not a valid youtube video'); return;}
+				if(err) {Subaru.respond(message, 'That\'s not a valid youtube link'); return;}
 				else var song_title = info.title;
 			
 				if (message.content.includes('-f') || !Subaru.voice[message.guild.name]) {
