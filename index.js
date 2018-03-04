@@ -74,13 +74,11 @@ Subaru.log('ok', `Loaded ${Subaru.USERS.size} users from DB!`);
 callback();
 };
 
-init(login);
-
-function login(){
-require('./util/APIcheck.js').run(Subaru);
-let loader = new Spinner(chalk.red("logging in.. ") + chalk.green("%s"));
-loader.setSpinnerString("⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏");
-loader.start();
-Subaru.loader = loader;
-Subaru.client.login(Subaru.config.token);
-}
+init(() => {
+	require('./util/APIcheck.js').run(Subaru);
+	let loader = new Spinner(chalk.red("logging in.. ") + chalk.green("%s"));
+	loader.setSpinnerString("⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏");
+	loader.start();
+	Subaru.loader = loader;
+	Subaru.client.login(Subaru.config.token);
+});
