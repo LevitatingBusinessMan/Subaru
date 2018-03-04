@@ -2,13 +2,15 @@ module.exports = (Subaru) => {
 	//Here you can easily create shortcuts to do certain things
 	try {
 		Subaru.log = require('./logger.js');
+		
+		Subaru.playSong = require('./playSong.js');
 				
 		Subaru.error = (err, message) => { if (message)Subaru.log('err', `trigger: ${message.content} \n ${err}\nat ${err.stack}`); 
 		else Subaru.log('err', `${err}\nat ${err.stack} \n`);}
 				
-		Subaru.respond = async (message, msg) => {
+		Subaru.respond = async (message, msg, embed) => {
 			return new Promise((resolve,reject) => { 
-			message.channel.send(msg)
+			message.channel.send(msg, (embed ? embed : undefined))
 			.then(x => {
 				x.addDestructor = (id) => {
 				if (!id) return 'No author given';

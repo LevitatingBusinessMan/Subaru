@@ -28,12 +28,16 @@ Subaru.destructors = new Map();
 //Create map for messages that weren't commands
 Subaru.editMessages = new Map();
 
+//Create object for voice
+Subaru.voice = new Object();
+
 const init = async (callback) => {
 await Subaru.USERS.defer;
 await Subaru.GUILDS.defer;
 
 //Read commands
 let commands = await fs.readdir('./commands');
+
 Subaru.log('OK', `Found ${commands.length} commands.`);
 Subaru.cmd = new Object;
 let i = 0;
