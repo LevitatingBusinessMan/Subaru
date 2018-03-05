@@ -29,7 +29,8 @@ module.exports = {
 					if(!err.message.startsWith('No video id found:')) throw err;
 					searchSong(args.filter(x => x != '-f').join(' ')).then(url => 
 						yt.getInfo(url, (err, info) => {
-							if (err) throw err; else Play(info);
+							if (err) {Subaru.log('err', err); Subaru.respond(message,'An error occured :v')}
+							else Play(info);
 						})
 					).catch(msg => msg.edit('Ended song selection'));
 				}
