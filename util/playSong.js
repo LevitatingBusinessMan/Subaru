@@ -39,7 +39,6 @@ module.exports = (Subaru, guild, queueElement) => {
 				Subaru.voice[guild.name].np.length = info.length_seconds;
 				
 				Subaru.voice[guild.name].dispatcher.on('end', reason => {
-					console.log('killed with reason: ' + reason);
 					if(reason == 'stop') return;
 					if (!(reason == 'kill') && Subaru.voice[guild.name].queue[0]) Subaru.playSong(Subaru, guild, Subaru.voice[guild.name].queue.shift());
 					else {Subaru.voice[guild.name].np = false; guild.voiceConnection.channel.leave();}
