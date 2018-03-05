@@ -8,6 +8,7 @@ module.exports = {
 		try {
 		if(!message.guild.voiceConnection) {Subaru.respond(message, 'No song playing'); return;}
 		if (!Subaru.voice[message.guild.name]) {Subaru.respond(message, 'No song playing'); return;}
+		if (!Subaru.voice[message.guild.name].np) {Subaru.respond(message, 'No song playing'); return;}
 		
 		Subaru.voice[message.guild.name].np.paused = false;
 		Subaru.voice[message.guild.name].dispatcher.resume();

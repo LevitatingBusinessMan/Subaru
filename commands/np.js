@@ -8,6 +8,7 @@ module.exports = {
 		try {
 		if(!message.guild.voiceConnection) {Subaru.respond(message, 'No song playing'); return;}
 		if (!Subaru.voice[message.guild.name]) {Subaru.respond(message, 'No song playing'); return;}
+		if (!Subaru.voice[message.guild.name].np) {Subaru.respond(message, 'No song playing'); return;}
 		
 		let playedMinutes = Subaru.voice[message.guild.name].dispatcher.time / 60000;
 		let lengthMinutes = Subaru.voice[message.guild.name].np.length / 60;

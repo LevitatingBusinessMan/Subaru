@@ -1,7 +1,7 @@
 module.exports = { run : Subaru => {
 	//Check if API token exists.
 	try {
-	APIs = ["googleGeoAPIkey", "DarkSkyAPIKey", "googleShortenerApiKey", "bitlyApiLogin", "bitlyApiKey", "CatAPI"];
+	APIs = ["googleGeoAPIkey", "DarkSkyAPIKey", "googleShortenerApiKey", "bitlyApiLogin", "bitlyApiKey", "CatAPI", "youtubeSearchApi"];
 	
 	for (let i=0; APIs.length > i; i++){
 		if (!Subaru.config[APIs[i]]){

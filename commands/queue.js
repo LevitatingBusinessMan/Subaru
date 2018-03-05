@@ -6,6 +6,7 @@ module.exports = {
 	
 	run : async (Subaru, client, args, message) => {
 		try {
+			if(!message.guild.voiceConnection) {Subaru.respond(message, 'There is no queue'); return;}
 			if (!Subaru.voice[message.guild.name]) {Subaru.respond(message, 'There is no queue'); return;}
 			if (!Subaru.voice[message.guild.name].queue[0]) {Subaru.respond(message, 'There is no queue'); return;}
 			
