@@ -29,9 +29,7 @@ module.exports = {
 				}
 			else {Subaru.respond(message, 'That person doesn\'t exist!');return;}
 			}
-			
-			console.log(receiver);
-			
+						
 			if (author.points > fooPoints){
 				author.points += -(fooPoints);
 				receiver.points += fooPoints;
