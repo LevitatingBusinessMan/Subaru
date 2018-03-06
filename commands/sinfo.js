@@ -15,7 +15,7 @@ module.exports = {
 					value: g.owner.displayName + ' :crown:',
 					inline: false
 				},{
-					name: 'Mebers:',
+					name: 'Members:',
 					value: g.members.array().length,
 					inline: true,
 				},{
