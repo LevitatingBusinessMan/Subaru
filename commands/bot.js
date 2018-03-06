@@ -52,11 +52,17 @@ module.exports = {
 				},{
 					name: "Developer:",
 					value: "LevitatingBusinessMan#0504",
-					inline: true
+					inline: false
+				},{
+					name: "Links:",
+					value: '[Trello](https://github.com/Gamerein/Subaru) | [GitHub](https://github.com/Gamerein/Subaru) ' + 
+				(Subaru.config.show_invite ? `| [Invite](https://discordapp.com/oauth2/authorize?client_id=${client.user.id}&scope=bot&permissions=8)` : ''),
+					inline: false
 				}],
 				footer: {
 					icon_url: message.author.avatarURL,
-					text: message.author.username + ' | ' + message.guild.name
+					text: message.author.username + ' | ' + message.guild.name + ' | ' + `Check ${Subaru.config.prefix}links`
+					
 				}, timestamp: new Date()
 				}});	
 			
@@ -66,3 +72,20 @@ module.exports = {
 		}
 	}
 }
+
+				/*	name: "Todo:",
+					value: '[Trello](https://github.com/Gamerein/Subaru)',
+					inline: true
+				},{
+					name: "GitHub:",
+					value: '[Here](https://github.com/Gamerein/Subaru)',
+					inline: true
+				},{
+					name: "Invite:",
+					value: Subaru.config.show_invite ?`[Here](https://discordapp.com/oauth2/authorize?client_id=${client.user.id}&scope=bot&permissions=8)`: 'Blocked',
+					inline: true
+				},{
+					name: "Support:",
+					value: 'soon',
+					inline: true
+				}*/
