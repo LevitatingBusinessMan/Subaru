@@ -30,7 +30,6 @@ module.exports = {
 				Subaru.GUILDS.setAsync(guild.id, guild).then(() => Subaru.respond(message, "Added **" + role.name + "** to autoroles"))
 				
 			} else if (args[0] == '-remove') {
-				console.log('gay')
 				let author = message.guild.members.array().filter(m => {return m.id == message.author.id});
 				if (!author[0].hasPermission('ADMINISTRATOR')) {Subaru.respond(message, "You don't have the administator permission!"); return;}
 				if (!args[1]) {Subaru.respond(message, "No role specified :v"); return;}
@@ -39,7 +38,6 @@ module.exports = {
 				guild.autoroles.splice(guild.autoroles.indexOf(args[1]));
 				Subaru.GUILDS.setAsync(guild.id, guild).then(() => Subaru.respond(message, "Removed **" + role.name + "** from autoroles"))
 			} else {
-				console.log(args[1])
 				if (guild.autoroles.length === 0) {Subaru.respond(message, "This server doesn't have any autoroles!"); return;}
 				let role = message.guild.roles.find('name', (args[0] == '-iamnot' ? args[1] : args[0]));
 				if (!role) {Subaru.respond(message, "That is not a role!"); return;}
