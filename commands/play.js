@@ -13,7 +13,6 @@ module.exports = {
 		try {
 			if (!args[0]) {Subaru.respond(message, 'You didn\'t specify a song!'); return;}
 			if (!message.member.voiceChannel) {Subaru.respond(message, 'You are not in a voice channel.'); return;}
-			if (!message.guild.voiceConnection) message.member.voiceChannel.join();
 			
 			//Create GuildVoice
 			if (!Subaru.voice[message.guild.name]) {
@@ -38,6 +37,8 @@ module.exports = {
 			});
 			
 			function Play(info) {
+				if (!message.guild.voiceConnection) message.member.voiceChannel.join();
+				
 				if (message.content.includes('-f') || !Subaru.voice[message.guild.name].np){
 					
 					Subaru.playSong(Subaru, message.guild, {
