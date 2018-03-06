@@ -43,7 +43,7 @@ module.exports = {
 					inline: true
 				},{
 					name: "Dependencies:",
-					value: (() => {let count = 0; for (var property in Subaru.packagejson) count++; return count})(),
+					value: (() => {let count = 0; for (var property in Subaru.packagejson.dependencies) count++; return count})(),
 					inline:true
 				},{
 					name: "Joined guild:",
