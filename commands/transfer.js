@@ -13,7 +13,7 @@ module.exports = {
 			
 			if (!args[0]) {Subaru.respond(message, 'Specify a user pls');return;}
 			if (!args[1]) {Subaru.respond(message, 'Specify an amount pls');return;}
-			if (isNaN(args[1])) {Subaru.respond(message, "That is not a valid number!"); return;}
+			if (isNaN(args[1])) {Subaru.respond(message, "Non-valid arguments"); return;}
 			
 			let fooPoints = Math.round((args[1]));
 			if (fooPoints < 0) {Subaru.respond(message, "No negative numbers allowed you cheeky bastard"); return;}
