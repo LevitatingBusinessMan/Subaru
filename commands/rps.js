@@ -10,7 +10,7 @@ module.exports = {
 			if (!user) {Subaru.respond(message, "Something went wrong :v"); return;}
 			if (!args[0]) {Subaru.respond(message, "No arguments specified :v"); return;}
 			let Uchoice = args[0].toLowerCase();
-			if (Uchoice != 'rock' && Uchoice != 'paper' && Uchoice != 'scissors') {Subaru.respond(message, "That is not a valid option"); return;}
+			if (Uchoice != 'rock' && Uchoice != 'paper' && Uchoice != 'scissors') {Subaru.respond(message, "Choose rock, paper or scissors as your first argument"); return;}
 			let foo = Math.floor(Math.random()*3);
 			let Bchoice = (foo == 1 ? 'rock' : (foo == 2 ? 'paper' : 'scissors'));
 			
