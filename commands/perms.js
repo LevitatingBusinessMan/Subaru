@@ -7,6 +7,7 @@ module.exports = {
 	run : async (Subaru, client, args, message) => {
 		try {
 			if (args[0]) var user = Subaru.getUser(args[0], message.guild.members); else var user = message.guild.members.get(message.author.id);
+			if (!user) {Subaru.respond(message,'User not found'); return;}
 			let embed = {
 				title: user.user.tag + (message.guild.owner == user ? ":crown:" : ""),
 				description: "Bitfield: " + user.permissions.bitfield,
