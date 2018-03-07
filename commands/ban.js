@@ -14,8 +14,8 @@ module.exports = {
 			if (!author[0].hasPermission('BAN_MEMBERS')) {Subaru.respond(message, "You don't have the permission to kick people!"); return;}
 			if (!args[0]) {Subaru.respond(message, "Specify somebody to ban pls"); return;}
 			let user = message.guild.members.get(args[0].replace('<@', '').replace('!', '').replace('>', ''));
+			if (!user) {Subaru.respond(message, "That is not a user! Please use mentions/ID's only!"); return;}
 			if (!user.bannable) {Subaru.respond(message, "You can't ban this user!"); return;}
-			if (!user) {Subaru.respond(message, "That is not a member!"); return;}
 			//Time to ban :3
 			user.ban(args.slice(1).join(" ") + " by " + author[0].user.tag).then(foo => {
 			if (message.guild.members.array().filter(x => x.id == user.id)[0]) Subaru.respond(message, "Something might've gone wrong :v");
