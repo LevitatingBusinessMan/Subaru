@@ -39,5 +39,11 @@ When you installed node.js you also installed npm which we'll use to install som
 <h5>Running the bot</h5>
 After inviting the bot with <a href="https://discordapi.com/permissions.html">this</a> tool we can finally run the bot. We must do so with a terminal located in Subaru's root directory and running <code>node .</code> You should see some fun stuff popping up in the console. When there are no errors you should be good to go!</p>
 
+<h2>Links:</h2>
+<h4><a href="https://trello.com/b/rpCewUOX">Trello board</a></h4>
+
+<h4><a href="https://discordbots.org/bot/383258557598007296">Discord Bots list</a>
+</h4>
+
 <h2>Developer</h2>
 LevitatingBusinessMan#0504
