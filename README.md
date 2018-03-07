@@ -41,9 +41,7 @@ After inviting the bot with <a href="https://discordapi.com/permissions.html">th
 
 <h2>Links:</h2>
 <h4><a href="https://trello.com/b/rpCewUOX">Trello board</a></h4>
-
-<h4><a href="https://discordbots.org/bot/383258557598007296">Discord Bots list</a>
-</h4>
-
+<h4><a href="https://discordbots.org/bot/383258557598007296">Discord Bots list</a></h4>
+<h4><a href="https://discordapp.com/oauth2/authorize?client_id=383258557598007296&scope=bot&permissions=8">Invite</a></h4>
 <h2>Developer</h2>
 LevitatingBusinessMan#0504
