@@ -55,7 +55,7 @@ module.exports = {
 					inline: false
 				},{
 					name: "Links:",
-					value: '[Trello](https://github.com/Gamerein/Subaru) | [GitHub](https://github.com/Gamerein/Subaru) ' + 
+					value: '[Trello](https://trello.com/b/rpCewUOX) | [GitHub](https://github.com/Gamerein/Subaru) ' + 
 				(Subaru.config.show_invite ? `| [Invite](https://discordapp.com/oauth2/authorize?client_id=${client.user.id}&scope=bot&permissions=8)` : ''),
 					inline: false
 				}],
