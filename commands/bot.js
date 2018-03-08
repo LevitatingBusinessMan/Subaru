@@ -72,20 +72,3 @@ module.exports = {
 		}
 	}
 }
-
-				/*	name: "Todo:",
-					value: '[Trello](https://github.com/Gamerein/Subaru)',
-					inline: true
-				},{
-					name: "GitHub:",
-					value: '[Here](https://github.com/Gamerein/Subaru)',
-					inline: true
-				},{
-					name: "Invite:",
-					value: Subaru.config.show_invite ?`[Here](https://discordapp.com/oauth2/authorize?client_id=${client.user.id}&scope=bot&permissions=8)`: 'Blocked',
-					inline: true
-				},{
-					name: "Support:",
-					value: 'soon',
-					inline: true
-				}*/
