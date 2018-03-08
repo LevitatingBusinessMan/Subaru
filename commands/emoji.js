@@ -60,7 +60,7 @@ module.exports = {
 				message.guild.createEmoji(args[2], args[1], undefined, (args[3] ? args.slice(3).join(" ") : undefined) + " by " + message.author.username).then(x => {
 				if (!x) Subaru.respond(message, "Welp, something might've gone wrong.")
 				else Subaru.respond(message, 'Succes!');
-				});
+				}).catch(err => Subaru.respond(message, ':x: ' + err.message));
 			}
 			// ADD ROLE
 			if (args[0] == '-addRole'){
