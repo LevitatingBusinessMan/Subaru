@@ -61,7 +61,7 @@ module.exports = {
 				}],
 				footer: {
 					icon_url: message.author.avatarURL,
-					text: message.author.username + ' | ' + message.guild.name + ' | ' + `Check ${Subaru.config.prefix}links`
+					text: message.author.username + ' | ' + message.guild.name
 					
 				}, timestamp: new Date()
 				}});	
