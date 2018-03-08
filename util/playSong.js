@@ -17,7 +17,6 @@ module.exports = (Subaru, guild, queueElement) => {
 				Subaru.sleep(50);
 			}
 			Subaru.voice[guild.name].dispatcher = guild.voiceConnection.playStream(yt(queueElement.url, { audioonly: true }), {volume: 0.1});
-			
 			//Send message
 			yt.getInfo(queueElement.url, (err, info) => {
 				let author = guild.members.get(queueElement.author);
@@ -26,7 +25,7 @@ module.exports = (Subaru, guild, queueElement) => {
 					title: info.title,
 					url: info.video_url,
 					description: info.description.substr(1, 300) + (info.description.length > 500 ? '...' : ''),
-					image: {url: info.thumbnail_url},
+					image: {url: info.player_response.videoDetails.thumbnail.thumbnails.last().url + '&width=100&height=200'},
 					timestamp: new Date(queueElement.time),
 					footer: {
 						icon_url: author.user.avatarURL,

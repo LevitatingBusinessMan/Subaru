@@ -70,6 +70,11 @@ module.exports = (Subaru) => {
 			return new Promise(resolve => setTimeout(resolve, ms));
 		}
 		
+		//Prototypes
+		Array.prototype.last = function(){
+			return this[this.length - 1];
+		};
+		
 	} catch (err) {
 		console.log(err);
 	}
