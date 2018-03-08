@@ -9,7 +9,8 @@ module.exports = (Subaru) => {
 		else Subaru.log('err', `${err}\nat ${err.stack} \n`);}
 				
 		Subaru.respond = async (message, msg, embed) => {
-			return new Promise((resolve,reject) => { 
+			return new Promise((resolve,reject) => {
+			if (!message.channel) {Subaru.log('err', 'Cant send message without channel'); reject();}
 			message.channel.send(msg, (embed ? embed : undefined))
 			.then(x => {
 				x.addDestructor = (id) => {
