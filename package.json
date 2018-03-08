@@ -16,7 +16,7 @@
     "discord.js": "^11.3.0",
     "enmap": "^0.6.1",
     "enmap-level": "^1.0.0",
-    "ffmpeg-binaries": "^3.2.2",
+    "ffmpeg-binaries": "^3.2.2-3",
     "fs-extra": "^5.0.0",
     "google-translate-api": "^2.3.0",
     "node-opus": "^0.2.7",
