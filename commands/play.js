@@ -1,6 +1,5 @@
 const yt = require('ytdl-core');
-var youtube_node = require('youtube-node');
-var yt_node = new youtube_node();
+const request = require('axios');
 
 module.exports = {
 	name: 'play',
@@ -25,6 +24,7 @@ module.exports = {
 			
 			yt.getInfo(args[0], async (err, info) => {				
 				if(err) {
+					//arg was not a url but a query
 					if(!err.message.startsWith('No video id found:')) throw err;
 					searchSong(args.filter(x => x != '-f').join(' ')).then(url => 
 						yt.getInfo(url, (err, info) => {
@@ -67,35 +67,39 @@ module.exports = {
 				}).catch(err => {Subaru.log('err',`trigger: ${message.content}\n ${err}`); Subaru.respond(message, 'An error occured :v')});
 			}
 			
-			async function searchSong(query){
-				return new Promise((resolve, reject) => {
-					yt_node.setKey(Subaru.config.youtubeSearchApi);
-					yt_node.search(query, 10, (err, result) => {
-						if (err) throw err;
-						if (!result.items[0]) {Subaru.respond(message, 'No results :v'); return;}
+			function searchSong(query){
+				return new Promise(async(resolve, reject) => {
+					let results = await request.get(`https://www.googleapis.com/youtube/v3/search?
+					q=${query}&part=snippet&type=video&maxResults=10&key=${Subaru.config.youtubeSearchApi}&relevanceLanguage=en`);
+
+					if (results.status != '200') {
+						Subaru.log('warn', `Trigger: ${message.content}\n Non 200 status code`);
+						Subaru.respond(message,'An error occured :v')}
+					else {
+						let items = results.data.items;
+						if (!items[0]) {Subaru.respond(message, 'No results :v');}
 						let result_msg = 'Choose:\n';
 						let i = 1;
-						result.items.forEach(x => {result_msg += `\`${i}\` ` + x.snippet.title + '\n'; i++});
+						items.forEach(x => {result_msg += `\`${i}\` ` + x.snippet.title + '\n'; i++});
 						result_msg += '**Cancel with `c`**';
 						
-							//Selector
-							Subaru.respond(message, result_msg).then(list_msg => {
-								var collector = 
-									list_msg.channel.createMessageCollector(msg => msg.author == message.author, {time: 15	 * 1000});
-								collector.on('collect', collected_msg => {
-									if (collected_msg.content == 'c') collector.stop();
-									let index = parseInt(collected_msg.content) - 1;
-									if(result.items[index]){
-										let url = 'https://www.youtube.com/watch?v=' + result.items[index].id.videoId;
-										list_msg.edit(`Selected song: \`${result.items[index].snippet.title}\``);
-										collected_msg.delete();
-										resolve(url);
-									} else collector.stop();
-								});
-								collector.on('end', () => reject(list_msg));
+						//Selector
+						Subaru.respond(message, result_msg).then(list_msg => {
+							var collector = 
+								list_msg.channel.createMessageCollector(msg => msg.author == message.author, {time: 15	 * 1000});
+							collector.on('collect', collected_msg => {
+								if (collected_msg.content == 'c') collector.stop();
+								let index = parseInt(collected_msg.content) - 1;
+								if(items[index]){
+									let url = 'https://www.youtube.com/watch?v=' + items[index].id.videoId;
+									list_msg.edit(`Selected song: \`${items[index].snippet.title}\``);
+									collected_msg.delete();
+									resolve(url);
+								} else collector.stop();
 							});
-							
+							collector.on('end', () => reject(list_msg));
 						});
+					}
 				});
 			}
 			
