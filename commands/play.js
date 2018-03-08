@@ -37,32 +37,34 @@ module.exports = {
 			});
 			
 			function Play(info) {
-				if (!message.guild.voiceConnection) message.member.voiceChannel.join();
+				if (!message.guild.voiceConnection) message.member.voiceChannel.join().then(() => {
 				
-				if (message.content.includes('-f') || !Subaru.voice[message.guild.name].np){
-					
-					Subaru.playSong(Subaru, message.guild, {
-						title: info.title,
-						url: info.video_url,
-						author: message.author.id,
-						channel: message.channel.id,
-						time: message.createdTimestamp
-					});
-					
-				} else {
-					if (Subaru.voice[message.guild.name].queue.filter(x => x.url == info.video_url)[0]) {
-						Subaru.respond(message, 'That song is already in the queue!'); return;
+					if (message.content.includes('-f') || !Subaru.voice[message.guild.name].np){
+						
+						Subaru.playSong(Subaru, message.guild, {
+							title: info.title,
+							url: info.video_url,
+							author: message.author.id,
+							channel: message.channel.id,
+							time: message.createdTimestamp
+						});
+						
+					} else {
+						if (Subaru.voice[message.guild.name].queue.filter(x => x.url == info.video_url)[0]) {
+							Subaru.respond(message, 'That song is already in the queue!'); return;
+						}
+						
+						Subaru.voice[message.guild.name].queue.push({
+							title: info.title,
+							url: info.video_url,
+							author: message.author.id,
+							channel: message.channel.id,
+							time: message.createdTimestamp
+						});
+						Subaru.respond(message, `Added \`${info.title}\` to queue`);
 					}
 					
-					Subaru.voice[message.guild.name].queue.push({
-						title: info.title,
-						url: info.video_url,
-						author: message.author.id,
-						channel: message.channel.id,
-						time: message.createdTimestamp
-					});
-					Subaru.respond(message, `Added \`${info.title}\` to queue`);
-				}
+				}).catch(err => {Subaru.log('err',`trigger: ${message.content}\n ${err}`); Subaru.respond(message, 'An error occured :v')});
 			}
 			
 			async function searchSong(query){
