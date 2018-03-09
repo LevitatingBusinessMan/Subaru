@@ -6,9 +6,9 @@ module.exports = {
 	
 	run : async (Subaru, client, args, message) => {
 		try {
-			if(!message.guild.voiceConnection) {Subaru.respond(message, 'There is no queue'); return;}
-			if (!Subaru.voice[message.guild.name]) {Subaru.respond(message, 'There is no queue'); return;}
-			if (!Subaru.voice[message.guild.name].queue[0]) {Subaru.respond(message, 'There is no queue'); return;}
+			if(!message.guild.voiceConnection) {Subaru.respond(message, 'No song playing'); return;}
+			if (!Subaru.voice[message.guild.name]) {Subaru.respond(message, 'No song playing'); return;}
+			if (!Subaru.voice[message.guild.name].np) {Subaru.respond(message, 'No song playing'); return;}
 			
 			if (!args[0] || isNaN(args[0])) Subaru.respond(message, `Current volume: \`${Subaru.voice[message.guild.name].dispatcher.volume * 100}\`%`);
 			else if (args[0]) {
