@@ -51,9 +51,10 @@ module.exports = {
 			if (args[0].startsWith('https://www.youtube.com/playlist?list=')) {
 				let id = args[0].split('=')[1];
 				if (!id) {Subaru.repond(message, 'Invalid playlist url'); return;}
+				console.log(`https://www.googleapis.com/youtube/v3/playlistItems?key=${Subaru.config.youtubeSearchApi}&playlistId=${id}&maxResults=500&part=snippet`);
 				let results = await request.get(`https://www.googleapis.com/youtube/v3/playlistItems?key=${Subaru.config.youtubeSearchApi}&playlistId=${id}&maxResults=50&part=snippet`)
 				if (results.status != '200'||results.data.error) {
-					Subaru.log('warn', `Trigger: ${message.content}\n Status code: ${results.status}, `);
+					Subaru.log('warn', `Trigger: ${message.content}\n Status code: ${results.status}`);
 					Subaru.respond(message,'An error occured :v')
 				}
 				if (!results.data.items[0]) Subaru.respond(message, 'Invalid or empty playlist');
@@ -76,7 +77,7 @@ module.exports = {
 						else count--;
 					}
 					Subaru.respond(message, `Added \`${count}\` songs to queue`);
-					if (!Subaru.voice[message.guild.name].np) Subaru.playSong(Subaru, message.guild, Subaru.voice[message.guild.name].queue[0]);
+					if (!Subaru.voice[message.guild.name].np) Subaru.playSong(Subaru, message.guild, Subaru.voice[message.guild.name].queue.shift());
 				}
 			}
 			//Query
