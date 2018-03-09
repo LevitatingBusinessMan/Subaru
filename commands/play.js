@@ -22,20 +22,6 @@ module.exports = {
 				Subaru.voice[message.guild.name] = GuildVoice;
 			}
 			
-			/*yt.getInfo(args[0], async (err, info) => {				
-				if(err) {
-					//arg was not a url but a query
-					if(!err.message.startsWith('No video id found:')) throw err;
-					searchSong(args.filter(x => x != '-f').join(' ')).then(url => 
-						yt.getInfo(url, (err, info) => {
-							if (err) {Subaru.log('err', err); Subaru.respond(message,'An error occured :v')}
-							else Play(info);
-						})
-					).catch(msg => msg.edit('Ended song selection'));
-				}
-				else Play(info);
-			});*/
-			
 			//Video url
 			if (args[0].startsWith('https://www.youtube.com/watch?v=') || args[0].startsWith('https://youtu.be/')){
 				if (args[0].startsWith('https://www.youtube.com/watch?v=')) var id = args[0].split('=')[1];
