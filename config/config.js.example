@@ -15,5 +15,9 @@ module.exports = {
 	//Google shortener API key
 	googleShortenerApiKey: false,
 	//For searching youtube-node
-	youtubeSearchApi: false
+	youtubeSearchApi: false,
+	
+	//Music
+	default_volume: 0.5,
+	voice_passes: 1
 }

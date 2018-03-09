@@ -16,7 +16,11 @@ module.exports = (Subaru, guild, queueElement) => {
 				if (!Subaru.voice[guild.name].dispatcher.destroyed) Subaru.voice[guild.name].dispatcher.end('stop');
 				Subaru.sleep(50);
 			}
-			Subaru.voice[guild.name].dispatcher = guild.voiceConnection.playStream(yt(queueElement.url, { audioonly: true }), {volume: 0.3});
+			Subaru.voice[guild.name].dispatcher = guild.voiceConnection.playStream(yt(queueElement.url, { audioonly: true }), {
+				volume: Subaru.config.default_volume,
+				passes: Subaru.config.voice_passes
+			});
+			
 			//Send message
 			yt.getInfo(queueElement.url, (err, info) => {
 				let author = guild.members.get(queueElement.author);
