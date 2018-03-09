@@ -14,11 +14,21 @@ module.exports = (Subaru) => {
 			message.channel.send(msg, (embed ? embed : undefined))
 			.then(x => {
 				x.addDestructor = (id) => {
-				if (!id) return 'No author given';
-				x.react('🗑');
-				x.authorID = id;
-				Subaru.destructors.set(x.id, x);
-			}; 
+					if (!id) return 'No author given';
+					x.react('🗑');
+					x.authorID = id;
+					Subaru.destructors.set(x.id, x);
+				};
+				x.addConfirm = (id) => {
+					if (!id) return 'No author given';
+					x.react('✅').then(() => x.react('❌'));
+					x.authorID = id;
+					return new Promise((resolve, reject) =>{
+						x.resolve = resolve;
+						x.reject = reject;
+						Subaru.emojiConfirms.set(x.id, x);
+					});
+				}
 			resolve(x);})
 			.catch(err => {Subaru.log('warn', "At: " + message.content + '\n' + err); message.channel.send('An error occured :v'); reject(err);})
 			});
