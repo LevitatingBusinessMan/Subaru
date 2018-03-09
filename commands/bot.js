@@ -34,6 +34,12 @@ module.exports = {
 					value: (process.memoryUsage().heapUsed / Math.pow(1024, 2)).toFixed(1) + " mb",
 					inline: true
 				},{
+					name: "Uptime:",
+					value: (client.uptime / 1000 / 60 / 60) > 24 ?
+					Math.floor(client.uptime / 1000 / 60 / 60 /24) + ' days' :
+					Math.floor(client.uptime / 1000 / 60 / 60) + ' hours',
+					inline:true
+				},{
 					name: "Version:",
 					value: Subaru.packagejson.version,
 					inline: true
@@ -41,10 +47,6 @@ module.exports = {
 					name: "Discord.js:",
 					value: require('../node_modules/discord.js/package.json').version,
 					inline: true
-				},{
-					name: "Dependencies:",
-					value: (() => {let count = 0; for (var property in Subaru.packagejson.dependencies) count++; return count})(),
-					inline:true
 				},{
 					name: "Joined guild:",
 					value: Subaru.formatDate( message.guild.joinedAt, "dd/mm/yy"),
@@ -64,7 +66,7 @@ module.exports = {
 					text: message.author.username + ' | ' + message.guild.name
 					
 				}, timestamp: new Date()
-				}});	
+				}});
 			
 		} catch (err) {
 			message.channel.send('An error occured :v');
