@@ -75,17 +75,6 @@ module.exports = {
 							});
 						else count--;
 					}
-					/*results.data.items.forEach(info => {
-					//Check if song is already in queue
-					if (!Subaru.voice[message.guild.name].queue.filter(x => x.url == 'https://www.youtube.com/watch?v=' + info.snippet.resourceId.videoId)[0])
-						Subaru.voice[message.guild.name].queue.push({
-							title: info.snippet.title,
-							url: 'https://www.youtube.com/watch?v=' + info.snippet.resourceId.videoId,
-							author: message.author.id,
-							channel: message.channel.id,
-							time: message.createdTimestamp
-						});
-					});*/
 					Subaru.respond(message, `Added \`${count}\` songs to queue`);
 					if (!Subaru.voice[message.guild.name].np) Subaru.playSong(Subaru, message.guild, Subaru.voice[message.guild.name].queue[0]);
 				}
