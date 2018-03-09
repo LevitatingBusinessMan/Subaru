@@ -82,7 +82,6 @@ module.exports = {
 			}
 			//Query
 			else searchSong(args.filter(x => x != '-f').join(' ')).then(info => Play(info)).catch(msg => msg.edit('Ended song selection'));
-			
 			function Play(info) {
 				if (!message.guild.voiceConnection) message.member.voiceChannel.join()
 				.catch(err => {Subaru.log('err',`trigger: ${message.content}\n ${err}`); Subaru.respond(message, 'An error occured :v')});
@@ -90,7 +89,7 @@ module.exports = {
 				if (message.content.includes('-f') || !Subaru.voice[message.guild.name].np){
 					
 					Subaru.playSong(Subaru, message.guild, {
-						title: info.title,
+						title: info.snippet.title,
 						url: 'https://www.youtube.com/watch?v=' + (typeof info.id == 'object'?info.id.videoId:info.id),
 						author: message.author.id,
 						channel: message.channel.id,
@@ -103,13 +102,13 @@ module.exports = {
 					}
 					
 					Subaru.voice[message.guild.name].queue.push({
-						title: info.title,
+						title: info.snippet.title,
 						url: 'https://www.youtube.com/watch?v=' + (typeof info.id == 'object'?info.id.videoId:info.id),
 						author: message.author.id,
 						channel: message.channel.id,
 						time: message.createdTimestamp
 					});
-					Subaru.respond(message, `Added \`${info.title}\` to queue`);
+					Subaru.respond(message, `Added \`${info.snippet.title}\` to queue`);
 				}
 					
 			}
