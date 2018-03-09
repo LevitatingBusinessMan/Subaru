@@ -13,7 +13,8 @@ module.exports = {
 			let msg = '**Queue:**\n';
 			for (i = 0; i < Subaru.voice[message.guild.name].queue.length; i++) 
 			msg += ` \`${i + 1}\` ${Subaru.voice[message.guild.name].queue[i].title}\n`;
-			Subaru.respond(message, msg);
+			if (msg.length > 2000) msg = msg.substr(0, 1991) + '\n **...**';
+			Subaru.respond(message, msg).then(x => x.addDestructor(message.author.id));
 
 		} catch (err) {
 			message.channel.send('An error occured :v');
