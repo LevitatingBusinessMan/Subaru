@@ -24,7 +24,7 @@ module.exports = {
 		else {
 			let str_sim = require('string-similarity')
 			let match = str_sim.findBestMatch(args.join(' '), Subaru.voice[message.guild.name].queue.map(x => x.title));
-			if (match.bestMatch.rating < 0.3) {Subaru.respond(message, 'Didn\'t find that song'); return;}
+			if (match.bestMatch.rating < 0.1) {Subaru.respond(message, 'Didn\'t find that song'); return;}
 			let element = Subaru.voice[message.guild.name].queue.filter(x => x.title == match.bestMatch.target)[0];
 			let index = Subaru.voice[message.guild.name].queue.indexOf(element);
 			Subaru.voice[message.guild.name].queue.splice(index, 1);
