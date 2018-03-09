@@ -75,6 +75,17 @@ module.exports = (Subaru) => {
 			return this[this.length - 1];
 		};
 		
+		Array.prototype.shuffle = function(){
+			let array = this;
+			for (i=array.length; i > 0;){
+				let t = Math.floor(Math.random() * i--);
+				let o = array[i];
+				array[i] = array[t];
+				array[t] = o;
+			}
+			return array;
+		}
+		
 		//Select part of string between two strings
 		String.prototype.between = function (begin, end) {
 			let beginIndex = this.indexOf(begin);
