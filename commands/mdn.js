@@ -14,7 +14,6 @@ module.exports = {
 					let results = await request.get(`https://developer.mozilla.org/en-US/search?locale=en-US&q=${args.join('+')}`);
 					if (results.status != 200){Subaru.respond(message, 'Something went wrong retrieving the data :v'); return;}
 					let docs = results.data.documents;
-					console.log(docs);
 					if (!docs[0]) Subaru.respond(message, 'no results :v');
 					else Subaru.respond(message, {embed:{
 						thumbnail: {url:'https://cdn.mdn.mozilla.net/static/img/favicon144.e7e21ca263ca.png'},
