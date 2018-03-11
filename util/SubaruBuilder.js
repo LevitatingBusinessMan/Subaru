@@ -30,7 +30,7 @@ module.exports = (Subaru) => {
 					});
 				}
 			resolve(x);})
-			.catch(err => {Subaru.log('warn', "At: " + message.content + '\n' + err); message.channel.send('An error occured :v'); reject(err);})
+			.catch(err => {message.channel.send('An error occured :v'); reject("\nAt: " + message.content + '\n' + err);})
 			});
 		}
 		
@@ -104,6 +104,11 @@ module.exports = (Subaru) => {
 			let length = endIndex - beginIndex - 1;
 			return this.substr(start, length);
 		}
+		
+		//Events
+		process.on('unhandledRejection', err => {
+			Subaru.log('warn', `Unhandled Promise Rejection: ${err}`);
+		});
 		
 	} catch (err) {
 		console.log(err);
