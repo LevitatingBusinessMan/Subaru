@@ -16,19 +16,28 @@ module.exports = (Subaru, guild, queueElement) => {
 				if (!Subaru.voice[guild.name].dispatcher.destroyed) Subaru.voice[guild.name].dispatcher.end('stop');
 				Subaru.sleep(50);
 			}
+			
+			if (Subaru.voice[guild.name].np) var volume = Subaru.voice[guild.name].dispatcher.volume;
+			else var volume = Subaru.config.default_volume;
+			
 			Subaru.voice[guild.name].dispatcher = guild.voiceConnection.playStream(yt(queueElement.url, { audioonly: true }), {
-				volume: Subaru.config.default_volume,
+				volume: volume,
 				passes: Subaru.config.voice_passes
 			});
 			
 			//Send message
 			yt.getInfo(queueElement.url, (err, info) => {
+				console.log(info);
 				let author = guild.members.get(queueElement.author);
 				let embed = {
+					author: {
+						name: info.author.name,
+						url: info.author.channel_url,
+						icon_url: info.author.avatar
+					},
 					color: 0xff0000,
 					title: info.title,
 					url: info.video_url,
-					description: info.description.substr(1, 300) + (info.description.length > 500 ? '...' : ''),
 					image: {url: info.player_response.videoDetails.thumbnail.thumbnails.last().url + '&width=100&height=200'},
 					timestamp: new Date(queueElement.time),
 					footer: {
@@ -44,7 +53,7 @@ module.exports = (Subaru, guild, queueElement) => {
 				Subaru.voice[guild.name].dispatcher.on('end', reason => {
 					if(reason == 'stop') return;
 					if (!(reason == 'kill') && Subaru.voice[guild.name].queue[0]) Subaru.playSong(Subaru, guild, Subaru.voice[guild.name].queue.shift());
-					else {Subaru.voice[guild.name].np = false; guild.voiceConnection.channel.leave();}
+					else {Subaru.voice[guild.name].np = false; guild.voiceConnection.channel.leave();}//kill
 				});
 				Subaru.voice[guild.name].dispatcher.on('error', err => {
 					Subaru.error('err', err);
