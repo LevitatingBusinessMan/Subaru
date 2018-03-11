@@ -2,7 +2,7 @@ const request = require('axios');
 
 module.exports = {
 	name: 'mdn',
-	catagory: 'General',
+	catagory: 'Utility',
 	description:'Search through MDN',
 	usage:'mdn',
 	
