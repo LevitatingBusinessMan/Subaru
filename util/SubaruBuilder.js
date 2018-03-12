@@ -98,11 +98,9 @@ module.exports = (Subaru) => {
 		
 		//Select part of string between two strings
 		String.prototype.between = function (begin, end) {
-			let beginIndex = this.indexOf(begin);
-			let endIndex = this.indexOf(end);
-			let start = beginIndex + begin.length;
-			let length = endIndex - beginIndex - 1;
-			return this.substr(start, length);
+			let startIndex = 0;
+			if (begin) startIndex = this.indexOf(begin) + begin.length;
+			return this.substring(startIndex, end ? this.lastIndexOf(end) : undefined);
 		}
 		
 		//Events
