@@ -10,7 +10,7 @@ module.exports = {
 		try {
 			//Check if author has perms
 			let author = message.guild.members.array().filter(m => {return m.id == message.author.id});
-			if (!author[0].hasPermission('ADMINESTRATOR')) {Subaru.respond(message, "You don't have adminestrator permissions!"); return;}
+			if (!author[0].hasPermission('MANAGE_SERVER')) {Subaru.respond(message, "You don't have manage_server permissions!"); return;}
 			
 			if (args[0] != '-set' && args[0] != '-remove') {
 				let channelID = Subaru.GUILDS.get(message.guild.id).musicChannel;
