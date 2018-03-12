@@ -45,7 +45,10 @@ module.exports = (Subaru, guild, queueElement) => {
 						text: author.user.username
 				}};
 				
-				guild.channels.get(queueElement.channel).send('Now playing:', {embed});
+				let channel = guild.channels.get(Subaru.GUILDS.get(guild.id).musicChannel);
+				console.log(channel);
+				if (channel) channel.send('Now playing:', {embed});
+				else guild.channels.get(queueElement.channel).send('Now playing:', {embed});
 				Subaru.voice[guild.name].np = new Object();
 				Subaru.voice[guild.name].np.DiscordEmbed = embed;
 				Subaru.voice[guild.name].np.length = info.length_seconds;
