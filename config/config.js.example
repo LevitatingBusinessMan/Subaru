@@ -3,6 +3,8 @@ module.exports = {
 	admin: ["ID of an admin", "Second admin?"],
 	token: "TOKEN_HERE",
 	show_invite: false,
+	//Token from discordbots.org
+	DBLtoken: false,
 	//Cat images API
 	CatAPI: false,
 	//Google Geocoding API

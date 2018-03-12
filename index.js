@@ -10,6 +10,12 @@ Subaru.client = new Discord.Client();
 Subaru.packagejson = require('./package.json');
 require('./util/SubaruBuilder.js')(Subaru);
 
+//DiscordBots.org
+if (Subaru.config.DBLtoken){
+	let DBL = require("dblapi.js");
+	Subaru.dbl = new DBL(Subaru.config.DBLtoken, Subaru.client);
+}
+
 // Load Enmap
 const Enmap = require('enmap');
 
