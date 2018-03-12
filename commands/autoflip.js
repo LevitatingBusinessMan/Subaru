@@ -15,7 +15,7 @@ module.exports = {
 			if (!args[0]) Subaru.respond(message, "Autounflipping is: `" + guild.autoTableflip + '`');
 			else if (args[0] == '-on' || args[0] == '-off') {
 				let author = message.guild.members.get(message.author.id);
-				if (!author.hasPermission('ADMINISTRATOR')) {Subaru.respond(message, "You don't have the administator permission!"); return;}
+				if (!author.hasPermission('MANAGE_GUILDS')) {Subaru.respond(message, "You don't have the administator permission!"); return;}
 				
 				if (args[0] == '-off') guild.autoTableflip = false;
 				if (args[0] == '-on') guild.autoTableflip = true;
