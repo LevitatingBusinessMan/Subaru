@@ -5,7 +5,7 @@
 	<a href="https://david-dm.org/Gamerein/Subaru"><img src="https://img.shields.io/david/Gamerein/Subaru.svg?style=flat-square" alt="dependencies"></a>
 	<a href="https://github.com/Gamerein/Subaru/issues"><img src="https://img.shields.io/github/issues/Gamerein/Subaru.svg?style=flat-square" alt="issues"></a>
 	<a href="https://github.com/Gamerein/Subaru/stargazers"><img src="https://img.shields.io/github/stars/Gamerein/Subaru.svg?style=flat-square&logo=github&label=Stars" alt="stars"></a>
-	<a href="https://github.com/Gamerein/Subaru/commits/master"><img src="https://img.shields.io/github/last-commit/Gamerein/Subaru.svg?style=flat-square">  
+	<a href="https://github.com/Gamerein/Subaru/commits/master"><img src="https://img.shields.io/github/last-commit/Gamerein/Subaru.svg?style=flat-square"></a>
 	</div>
 
 <h2>Features</h2>
