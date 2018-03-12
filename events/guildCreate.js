@@ -6,7 +6,9 @@ module.exports = {
 				name: guild.name,
 				id: guild.id,
 				prefix: false,
-				autoroles: false
+				autoroles: false,
+				musicChannel: false,
+				autoTableflip: true
 			}
 		Subaru.GUILDS.setAsync(guild.id, doc).then(() => Subaru.log('warn', 'Added: ' + guild.name));
 		} catch (err) {

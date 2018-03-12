@@ -13,7 +13,9 @@ module.exports = {
 				name: guild.name,
 				id: guild.id,
 				prefix: false,
-				autoroles: false
+				autoroles: false,
+				musicChannel: false,
+				autoTableflip: true
 			}
 			if (!Subaru.GUILDS.get(guild.id)) Subaru.GUILDS.setAsync(guild.id, doc).then(() => Subaru.log('ok', 'Added: ' + guild.name));
 		});
