@@ -30,7 +30,6 @@ module.exports = {
 				if (args[0].includes("bit.ly")) {
 					const key = Subaru.config.bitlyApiKey;
 					var result = await request.get(`https://api-ssl.bitly.com/v3/expand?login=${key[0]}&apiKey=${key[1]}&shortUrl=${args[0]}`);
-					console.log(result.data.data.expand[0].long_url);
 					if (!result.data) { Subaru.respond(message, ":x: An error occurred :v"); return; };
 					Subaru.respond(message, embedResults(result.data.data.expand[0].short_url, result.data.data.expand[0].long_url));
 				} else if (args[0].includes("goo.gl")) {
