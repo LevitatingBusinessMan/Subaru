@@ -107,7 +107,7 @@ module.exports = {
 						Subaru.respond(message,'An error occured :v')}
 					else {
 						let items = results.data.items;
-						if (!items[0]) {Subaru.respond(message, 'No results :v');}
+						if (!items[0]) {Subaru.respond(message, 'No results :v'); return;}
 						let result_msg = 'Choose:\n';
 						let i = 1;
 						items.forEach(x => {result_msg += `\`${i}\` ` + x.snippet.title + '\n'; i++});
