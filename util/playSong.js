@@ -27,7 +27,6 @@ module.exports = (Subaru, guild, queueElement) => {
 			
 			//Send message
 			yt.getInfo(queueElement.url, (err, info) => {
-				console.log(info);
 				let author = guild.members.get(queueElement.author);
 				let embed = {
 					author: {
@@ -46,7 +45,6 @@ module.exports = (Subaru, guild, queueElement) => {
 				}};
 				
 				let channel = guild.channels.get(Subaru.GUILDS.get(guild.id).musicChannel);
-				console.log(channel);
 				if (channel) channel.send('Now playing:', {embed});
 				else guild.channels.get(queueElement.channel).send('Now playing:', {embed});
 				Subaru.voice[guild.name].np = new Object();
