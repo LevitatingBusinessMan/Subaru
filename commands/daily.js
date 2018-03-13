@@ -9,12 +9,20 @@ module.exports = {
 			let user = await Subaru.USERS.get(message.author.id);
 			if (!user) {Subaru.respond(message, "Something went wrong :v"); return;}
 			if (user.daily < new Date() || !user.daily){
-				user.points += 500;
+				
+				if (Subaru.dbl) {
+					if (Subaru.dbl.hasVoted(message.author.id)) {
+						user.points += 750;
+						var bonus = true;
+					}
+					else user.points += 500;
+				} else user.points += 500;
+				
 				user.daily =  new Date().getTime() + 12*60*60*1000;
 				Subaru.USERS.setAsync(user.id, user).then(() => {
-					Subaru.respond(message, "**500** points have been added to your account")}).catch(err => {
-					Subaru.respond(message, "Something went wrong :v");
-					Subaru.log('warn', 'At: ' + message.content + '\n' + err)});
+					Subaru.respond(message, bonus ? 
+					"**750** daily points received *(250 for voting)*" :
+					"**500** daily points received")});
 			} else {
 				let time = Subaru.formatDate(new Date(user.daily), 'hh:mi');
 				Subaru.respond(message, "Please wait untill **" + time + (time.substr(0,2) > 12 ? ' pm' : ' am') +'** before using daily again');
