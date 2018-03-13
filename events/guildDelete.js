@@ -1,20 +1,10 @@
-module.exports = {
-	name: "guildCreate",
+	module.exports = {
+	name: "guildDelete",
 	run : (Subaru, client, guild) => {
 		try {
-			var doc = {
-				name: guild.name,
-				id: guild.id,
-				prefix: false,
-				autoroles: false,
-				musicChannel: false,
-				autoTableflip: true
-			}
-		Subaru.GUILDS.setAsync(guild.id, doc).then(() => Subaru.log('warn', 'Added: ' + guild.name));
-		
-		//log to channel
-		if (Subaru.config.logChannel) Subaru.config.logChannel.send('Joined guild:', {embed:{
-				color: 0x00ff00,
+			//Log to channel
+			if (Subaru.config.logChannel) Subaru.config.logChannel.send('Left guild:', {embed:{
+				color: 0xff0000,
 				thumbnail: {url: guild.iconURL},
 				title: guild.name,
 				description: guild.id,

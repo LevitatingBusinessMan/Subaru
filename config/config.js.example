@@ -3,6 +3,7 @@ module.exports = {
 	admin: ["ID of an admin", "Second admin?"],
 	token: "TOKEN_HERE",
 	show_invite: false,
+	
 	//Token from discordbots.org
 	DBLtoken: false,
 	//Cat images API
@@ -21,5 +22,8 @@ module.exports = {
 	
 	//Music
 	default_volume: 0.5,
-	voice_passes: 1
+	voice_passes: 1,
+	
+	//Logging
+	logChannel: false //This gets changed to a channel at ready
 }

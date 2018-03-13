@@ -24,6 +24,10 @@ module.exports = {
 		console.log(chalk.red("guilds: ") + chalk.green(client.guilds.array().length));
 		console.log(chalk.red("users: ") + chalk.green(client.users.array().length));
 		console.log(chalk.red("prefix: ") + chalk.green(Subaru.config.prefix));
+		
+		if (Subaru.config.logChannel) 
+            Subaru.config.logChannel = Subaru.client.channels.get(Subaru.config.logChannel);
+		
 		} catch (err) {
 			Subaru.error(err);
 		}
