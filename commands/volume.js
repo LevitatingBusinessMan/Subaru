@@ -14,8 +14,8 @@ module.exports = {
 			else if (args[0]) {
 				if (args[0] > 200) Subaru.voice[message.guild.name].dispatcher.setVolume(2); //max
 				else if (args[0] < 10) Subaru.voice[message.guild.name].dispatcher.setVolume(0.1); //min
-				else Subaru.voice[message.guild.name].dispatcher.setVolume(args[0]/100);
-				Subaru.respond(message, `Volume: \`${Subaru.voice[message.guild.name].dispatcher.volume * 100}\`%`)
+				else Subaru.voice[message.guild.name].dispatcher.setVolume(Math.floor(args[0]/100));
+				Subaru.respond(message, `Volume: \`${Math.floor(Subaru.voice[message.guild.name].dispatcher.volume * 100)}\`%`)
 			}
 		} catch (err) {
 			message.channel.send('An error occured :v');
