@@ -35,7 +35,7 @@ To set the channel, \`prefix.setGreeting -channel channelname\`
 						.replace('%guild%', message.guild.name)
 					},{
 						name: 'Farewell:',
-						value: !guild.farewell ? 'none' : guild.greeting
+						value: !guild.farewell ? 'none' : guild.farewell
 						.replace('%user&', message.author.username)
 						.replace('%user-tag%', message.author.tag)
 						.replace('%user-mention%', `<@${message.author.id}>`)
