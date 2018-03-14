@@ -15,7 +15,10 @@ module.exports = {
 				prefix: false,
 				autoroles: false,
 				musicChannel: false,
-				autoTableflip: true
+				autoTableflip: true,
+				greetingChannel: false,
+				farewell: false,
+				greeting: false
 			}
 			if (!Subaru.GUILDS.get(guild.id)) Subaru.GUILDS.setAsync(guild.id, doc).then(() => Subaru.log('ok', 'Added: ' + guild.name));
 		});

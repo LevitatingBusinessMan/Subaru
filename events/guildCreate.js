@@ -8,7 +8,10 @@ module.exports = {
 				prefix: false,
 				autoroles: false,
 				musicChannel: false,
-				autoTableflip: true
+				autoTableflip: true,
+				greetingChannel: false,
+				farewell: false,
+				greeting: false
 			}
 		Subaru.GUILDS.setAsync(guild.id, doc).then(() => Subaru.log('warn', 'Added: ' + guild.name));
 		
