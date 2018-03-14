@@ -52,7 +52,7 @@ To set the channel, \`prefix.setGreeting -channel channelname\`
 			
 			else {
 				let author = message.guild.members.get(message.author.id);
-				if (!author.hasPermission('MANAGE_GUILDS')) {Subaru.respond(message, "You don't have the **manage server** permission!"); return;}
+				if (!author.hasPermission('MANAGE_GUILD')) {Subaru.respond(message, "You don't have the **manage server** permission!"); return;}
 				
 				//remove
 				if (args[0] == '-remove'){
