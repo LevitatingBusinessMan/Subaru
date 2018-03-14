@@ -29,14 +29,14 @@ To set the channel, \`prefix.setGreeting -channel channelname\`
 					fields: [{
 						name: 'Greeting:',
 						value: !guild.greeting ? 'none' : guild.greeting
-						.replace('%user&', message.author.username)
+						.replace('%user%', message.author.username)
 						.replace('%user-tag%', message.author.tag)
 						.replace('%user-mention%', `<@${message.author.id}>`)
 						.replace('%guild%', message.guild.name)
 					},{
 						name: 'Farewell:',
 						value: !guild.farewell ? 'none' : guild.farewell
-						.replace('%user&', message.author.username)
+						.replace('%user%', message.author.username)
 						.replace('%user-tag%', message.author.tag)
 						.replace('%user-mention%', `<@${message.author.id}>`)
 						.replace('%guild%', message.guild.name)
@@ -89,7 +89,7 @@ To set the channel, \`prefix.setGreeting -channel channelname\`
 						return;
 					}
 					let preview = args.join(' ')
-					.replace('%user&', message.author.username)
+					.replace('%user%', message.author.username)
 					.replace('%user-tag%', message.author.tag)
 					.replace('%user-mention%', `<@${message.author.id}>`)
 					.replace('%guild%', message.guild.name);

@@ -8,7 +8,7 @@ module.exports = {
 				let channel = client.channels.get(guild.greetingChannel);
 				if (!channel) return;
 				channel.send(guild.farewell
-				.replace('%user&', guildMember.user.username)
+				.replace('%user%', guildMember.user.username)
 				.replace('%user-tag%', guildMember.user.tag)
 				.replace('%user-mention%', `<@${guildMember.user.id}>`)
 				.replace('%guild%', guildMember.guild.name)
