@@ -9,16 +9,20 @@ module.exports = {
 			let user = await Subaru.USERS.get(message.author.id);
 			if (!user) {Subaru.respond(message, "Something went wrong :v"); return;}
 			if (user.daily < new Date() || !user.daily){
-				
+				var bonus = false;
+			
+				//DBL is linked
 				if (Subaru.dbl) {
-					if (Subaru.dbl.hasVoted(message.author.id)) {
+					let voted = await Subaru.dbl.hasVoted(message.author.id)
+					if (voted) {
 						user.points += 750;
-						var bonus = true;
-					}
+						bonus = true;
+					} 
 					else user.points += 500;
 				} else user.points += 500;
 				
 				user.daily =  new Date().getTime() + 12*60*60*1000;
+				
 				Subaru.USERS.setAsync(user.id, user).then(() => {
 					Subaru.respond(message, bonus ? 
 					"**750** daily points received *(250 for voting)*" :
