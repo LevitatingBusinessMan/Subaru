@@ -50,12 +50,14 @@ module.exports = (Subaru, guild, queueElement) => {
 				Subaru.voice[guild.name].np = new Object();
 				Subaru.voice[guild.name].np.DiscordEmbed = embed;
 				Subaru.voice[guild.name].np.length = info.length_seconds;
-				Subaru.voice[guild.name].queueElement = queueElement;
 				
 				Subaru.voice[guild.name].dispatcher.on('end', reason => {
+					//kill: killed by leaving
+					//stop: pause
+					
 					if(reason == 'stop') return;
 					
-					if (!(reason == 'kill') && Subaru.voice[guild.name].queue[0]) {
+					if (reason != 'kill' && Subaru.voice[guild.name].queue[0]) {
 						//Repeat off
 						if (!Subaru.voice[guild.name].loop) Subaru.playSong(Subaru, guild, Subaru.voice[guild.name].queue.shift());
 						//Repeat on
@@ -66,9 +68,9 @@ module.exports = (Subaru, guild, queueElement) => {
 					}
 					
 					//Repeat on, no queue
-					else if (Subaru.voice[guild.name].loop)Subaru.playSong(Subaru, guild, queueElement);
+					else if (reason != 'kill' && Subaru.voice[guild.name].loop) Subaru.playSong(Subaru, guild, queueElement);
 					//Repeat off, no queue
-					else{ Subaru.voice[guild.name].np = false; guild.voiceConnection.channel.leave();}//kill
+					else {delete Subaru.voice[guild.name]; guild.voiceConnection.channel.leave();}//kill
 				});
 				Subaru.voice[guild.name].dispatcher.on('error', err => {
 					Subaru.error('err', err);
