@@ -17,7 +17,9 @@ module.exports = {
 
 		let embed = Subaru.voice[message.guild.name].np.DiscordEmbed;
 		embed.fields = [];
-		embed.fields.push({name: 'Progress:', value: `\`${playedTimeStamp}/${lengthTimeStamp}\``});
+		embed.fields.push({name: 'Progress:', value: `\`${playedTimeStamp}/${lengthTimeStamp}\``, inline: true});
+		embed.fields.push({name: 'Volume:', value: `\`${Subaru.voice[message.guild.name].dispatcher.volume * 100}\`%`, inline: true});
+		embed.fields.push({name: 'repeat:', value: Subaru.voice[message.guild.name].loop ? ':repeat:' : ':arrow_right:' , inline: true});
 		Subaru.respond(message, (Subaru.voice[message.guild.name].np.paused ? ':pause_button: paused:' : 'Now playing:'), {embed});
 		
 		} catch (err) {

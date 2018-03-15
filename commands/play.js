@@ -18,6 +18,7 @@ module.exports = {
 				let GuildVoice = new Object();
 				GuildVoice.queue = [];
 				GuildVoice.np = false;
+				GuildVoice.loop = false;
 				
 				Subaru.voice[message.guild.name] = GuildVoice;
 			}

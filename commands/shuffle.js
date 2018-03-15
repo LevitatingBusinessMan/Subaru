@@ -11,7 +11,7 @@ module.exports = {
 			if (!Subaru.voice[message.guild.name].queue[0]) {Subaru.respond(message, 'There is no queue'); return;}
 			
 			Subaru.voice[message.guild.name].queue = Subaru.voice[message.guild.name].queue.shuffle()
-			Subaru.respond(message, 'Shuffled the queue!');
+			Subaru.respond(message, ':twisted_rightwards_arrows: Shuffled the queue!');
 		} catch (err) {
 			message.channel.send('An error occured :v');
 			Subaru.error(err, message);
