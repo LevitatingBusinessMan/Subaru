@@ -4,8 +4,12 @@ module.exports = {
 		try {
 		if (message.author.bot) return;
 		
+		//perm check
+		if (!message.channel.permissionsFor(message.guild.me).has("SEND_MESSAGES")) return;
+		
 		//AFK feature
 		if (message.content.includes('<@') && message.content.includes('>')){
+			
 			let msg = message.content;
 			if (msg.split('<@').length - 1 < 2){ //Disallow for multiple mentions in 1 msg
 			// VVV for nickname mentions
