@@ -1,15 +1,15 @@
 module.exports = {
-	name: 'pat',
+	name: 'lick',
 	catagory: 'Image',
-	description: 'Pat someone! Share the love UwU',
-	usage: 'pat Puck',
+	description: 'Lick someone! Share the Love UwU',
+	usage: 'lick Felix',
 	
 	//Default function for use of "this"
 	run : async function(Subaru, client, args, message) {
 		try {
 			//Only 2 things to change for different image commands
-			let color = 0xff66ff;
-			let verb = 'patted';
+			let color = 0xff0000;
+			let verb = 'licked';
 			
 			const request = require("axios");
 			let result = await request.get('https://rra.ram.moe/i/r?type=' + this.name);		

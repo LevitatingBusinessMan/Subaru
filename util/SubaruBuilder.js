@@ -96,6 +96,10 @@ module.exports = (Subaru) => {
 			return array;
 		}
 		
+		String.prototype.capitalize = function() {
+			return this.charAt(0).toUpperCase() + this.slice(1);
+		}
+		
 		//Select part of string between two strings
 		String.prototype.between = function (begin, end) {
 			let startIndex = 0;

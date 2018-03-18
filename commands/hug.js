@@ -4,28 +4,33 @@ module.exports = {
 	description: 'Hug someone! Share the love UwU',
 	usage: 'hug Emilia',
 	
-	run : async (Subaru, client, args, message) => {
+	//Default function for use of "this"
+	run : async function(Subaru, client, args, message) {
 		try {
+			//Only 2 things to change for different image commands
+			let color = 0xff66ff;
+			let verb = 'hugged';
+			
 			const request = require("axios");
-			let result = await request.get('https://nekos.life/api/v2/img/hug');
-			if (!result.data) {Subaru.log('warn', 'Trying to load image command');Subaru.respond(message, 'Error trying to get image'); return;}
+			let result = await request.get('https://rra.ram.moe/i/r?type=' + this.name);		
+			if (result.status != 200) return Subaru.respond(message, "Something went wrong retrieving your image :v");
+			let image = 'https://cdn.ram.moe' + result.data.path.substr(2);
+			
 			let embed = {
-				title: 'Hug',
-				image: result.data,
-				color: 0xff66ff,
-				footer:{
-					text: 'powered by https://nekos.life'
+				image: {url: image},
+				color
 			}
-			}
-			if (!args[0] == false) {
+			
+			if (args[0] && verb) {
 				let receiver = Subaru.getUser(args[0], message.guild.members);
-				if (!receiver) {Subaru.respond(message, 'User not found :v'); return;}
+				if (!receiver) return Subaru.respond(message, 'User not found :v');
 				let user =  message.guild.members.get(message.author.id);
-				if (!user) {Subaru.respond(message, 'Something went wrong  :v'); return;}
 				
-				embed.description = `**${user.displayName}** hugged **${receiver.displayName}**!`;
+				embed.description = `**${user.displayName}** ${verb} **${receiver.displayName}**!`;
 			}
+			
 			Subaru.respond(message, {embed});
+			
 		} catch (err) {
 			message.channel.send('An error occured :v');
 			Subaru.error(err, message);
