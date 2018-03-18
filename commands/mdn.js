@@ -19,7 +19,7 @@ module.exports = {
 						thumbnail: {url:'https://cdn.mdn.mozilla.net/static/img/favicon144.e7e21ca263ca.png'},
 						url: docs[0].url,
 						title: docs[0].title,
-						color: 0x0066ff,
+						color: 0x88d1f1,
 						description: docs[0].excerpt,
 						footer: {
 							icon_url: 'https://cdn.mdn.mozilla.net/static/img/favicon144.e7e21ca263ca.png',
