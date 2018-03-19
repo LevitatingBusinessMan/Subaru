@@ -35,7 +35,7 @@ module.exports = {
 					value: guild.farewell ? guild.farewell : 'none'
 				},{
 					name: `Autoroles[${guild.autoroles ? guild.autoroles.length : '0'}]:`,
-					value: guild.autoroles ? guild.autoroles.join(', ') : 'none'
+					value: guild.autoroles[0] ? guild.autoroles.join(', ') : 'none'
 				}],
 				footer :{
 					icon_url: message.guild.owner.user.avatarURL,
