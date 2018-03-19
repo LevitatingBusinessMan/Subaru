@@ -12,7 +12,7 @@ module.exports = {
 			if (!args[0]) {Subaru.respond(message, 'Current prefix: \`' + (guild.prefix ? guild.prefix : Subaru.config.prefix) + '\`'); return;}
 			
 			let author = message.guild.members.array().filter(m => {return m.id == message.author.id});
-			if (!author[0].hasPermission('ADMINISTRATOR')) {Subaru.respond(message, "You don't have the administator permission!"); return;}
+			if (!author[0].hasPermission('MANAGE_GUILD')) {Subaru.respond(message, "You don't have the administator permission!"); return;}
 			
 			guild.prefix = args[0]; 
 			Subaru.GUILDS.set(guild.id, guild);
