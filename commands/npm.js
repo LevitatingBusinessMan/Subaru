@@ -9,9 +9,10 @@ module.exports = {
 			let request = require('axios');
 			if (!args[0]){ Subaru.respond(message,"Specify a module kthnx"); return; }	
 			
-			request.get('https://www.npmjs.com/search/suggestions?q=' + args[0]).then(results => {
-				
+			request.get('https://www.npmjs.com/search/suggestions?q=' + args[0]).then(results => {				
 				let module = results.data[0];
+				
+				if(!module) return Subaru.respond(message, 'No results');
 				
 				Subaru.respond(message, {embed:{
 					url: module.links.npm,
@@ -34,7 +35,7 @@ module.exports = {
 				
 				}).catch(err => {
 					Subaru.respond(message, 'Something went wrong :v');
-					Subaru.log('warn', err.toString());
+					Subaru.error(err, message);
 				});
 				
 		} catch (err) {
