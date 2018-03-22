@@ -1,6 +1,6 @@
 {
   "name": "Subaru",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -22,6 +22,7 @@
     "google-translate-api": "^2.3.0",
     "node-opus": "^0.2.7",
     "npm-module-search": "^2.0.0",
+    "puppeteer": "^1.2.0",
     "require-reload": "^0.2.2",
     "string-similarity": "^1.2.0",
     "ytdl-core": "^0.20.2"
