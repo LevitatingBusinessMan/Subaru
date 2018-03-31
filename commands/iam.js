@@ -14,9 +14,8 @@ module.exports = {
 				authority = message.member.hasPermission('MANAGE_ROLES'),
 				guild = Subaru.GUILDS.get(message.guild.id);
 			
-			//Check if bot has perms
-			let clientUserGuild = message.guild.members.array().filter(m => {return m.id ==client.user.id});
-			if (!clientUserGuild[0].hasPermission('MANAGE_ROLES')) return Subaru.respond(message, "I don't have the permission to kick manage roles!!");
+			if (!message.guild.me.hasPermission('MANAGE_ROLES'))
+				return Subaru.respond(message, "I don't have the permission to manage roles!!");
 			
 			//Show roles
 			if (!args[0]) {
