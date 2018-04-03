@@ -27,22 +27,38 @@ module.exports = (Subaru, guild, queueElement) => {
 			
 			//Send message
 			yt.getInfo(queueElement.url, (err, info) => {
-				let author = guild.members.get(queueElement.author);
-				let embed = {
-					author: {
-						name: info.author.name,
-						url: info.author.channel_url,
-						icon_url: info.author.avatar
-					},
-					color: 0xff0000,
-					title: info.title,
-					url: info.video_url,
-					image: {url: info.player_response.videoDetails.thumbnail.thumbnails.last().url + '&width=100&height=200'},
-					timestamp: new Date(queueElement.time),
-					footer: {
-						icon_url: author.user.avatarURL,
-						text: author.user.username
-				}};
+				if (err) { 
+					var embed = {
+						title: 'Error collecting info fom video',
+						color: 0xff0000
+					};
+					Subaru.log('err',err);
+				} else {
+					
+					//try,catch in case of missing data
+					try {
+						let author = guild.members.get(queueElement.author);
+						var embed = {
+							author: {
+								name: info.author.name,
+								url: info.author.channel_url,
+								icon_url: info.author.avatar
+							},
+							color: 0xff0000,
+							title: info.title,
+							url: info.video_url,
+							image: {url: info.player_response.videoDetails.thumbnail.thumbnails.last().url + '&width=100&height=200'},
+							timestamp: new Date(queueElement.time),
+							footer: {
+								icon_url: author.user.avatarURL,
+								text: author.user.username
+						}};
+				
+					} catch(err) {
+						//Embed simply doesn't get send
+						Subaru.log('err',err);
+					}
+				}
 				
 				let channel = guild.channels.get(Subaru.GUILDS.get(guild.id).musicChannel);
 				if (channel) channel.send('Now playing:', {embed});
@@ -77,6 +93,7 @@ module.exports = (Subaru, guild, queueElement) => {
 				});
 			});
 		}
+		
 	} catch (err){
 		Subaru.log('err', err);
 	}
