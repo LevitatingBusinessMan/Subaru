@@ -2,7 +2,7 @@ module.exports = {
 	name: 'kick',
 	catagory: 'Moderation',
 	description:'Kick stuff',
-	usage:'kick mention/id',
+	usage:'kick mention/id This guy is an asshole',
 	
 	run : async (Subaru, client, args, message) => {
 		try {
