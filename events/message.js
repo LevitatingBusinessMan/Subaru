@@ -46,7 +46,7 @@ module.exports = {
 			Subaru.newUser(message.author).then(() => {
 				if (Subaru.cmd[command].admin && !Subaru.config.admin.includes(message.author.id)) { Subaru.respond(message, "This command is for admins only"); return;}
 				cmd = Subaru.cmd[command];
-				cmd.run(Subaru, client, args, message);
+				cmd.run(Subaru, client, args, message, prefix);
 			});
 		} else if (Subaru.cmd[command]){Subaru.respond(message, "This command is disabled.")}
 		//Add to messages that werent commands
