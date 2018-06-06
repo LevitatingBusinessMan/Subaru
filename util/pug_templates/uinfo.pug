@@ -1,0 +1,221 @@
+doctype html
+
+style.
+	* {
+	    box-sizing: border-box;
+		font-family: fjalla-one;
+		color: ##{text_color};
+	}
+	
+	@font-face {
+		font-family: fjalla-one;
+		src: url('http://localhost:3000/fonts/FjallaOne-Regular.ttf');
+	}
+
+	body {
+		margin: 0px;
+	}
+	
+	.block {
+		display: inline-block;
+	}
+	
+	.block#name-block {
+		width: 455px;
+		height: 120px;
+		position: absolute;
+		top: 10px;
+		overflow: hidden;	
+	}
+	
+	.block#name-block > div#username-block {
+		height: 70px;
+		margin-top: 5px;
+		border: 3px solid ##{border_color};
+		border-radius: 6px;
+	}
+	
+	.block#name-block > div#guild-block {
+		height: 45px;
+		border: 3px solid ##{border_color};
+		border-radius: 6px;
+	}
+	
+	
+	.block#avatar-block {
+		width: 120px;
+		height: 120px;
+		margin-right: 5px;
+	}
+	
+	#card {
+		width: 600px;
+		height: 400px;
+		padding: 10px;
+		background-image: url(#{'http://localhost:3000/backgrounds/' + bg + '.jpg'});
+		background-size: cover;
+		border-radius: 13px;
+	}
+	
+	img#avatar-img {
+		width: 100%;
+		height: 100%;
+		border-radius: 50%;
+		border: 3px solid ##{border_color};
+	}
+	
+	p#username, p#guild-name {
+		margin: 0px;
+		position: relative;
+		font-family: fjalla-one;
+	}
+	
+	p#username {
+		--height: 24px;
+		line-height: 0px;
+		font-size: var(--height);
+		top: calc(50% );
+	}
+	
+	p#guild-name {
+		--height: 38px;
+		line-height: 0px;
+		font-size: var(--height);
+		top: calc(50% );
+	}
+	
+	.block#info-block {
+		width: 580px;
+		height: 260px;
+		border-radius: 6px;
+		border: 3px solid ##{border_color};
+	}
+	
+	.column {
+		list-style-type: none;
+		display: inline-block;
+		padding: 0px;
+		margin: 0px;
+	}
+	
+	.column li {
+		margin: 5px;
+	}
+	
+	.info {
+		width: 180px;
+		height: 45px;
+		border-radius: 6px;
+		border: 3px solid ##{border_color};
+	}
+	
+	.field.value {
+		height: 25px;
+		font-size: 19px;
+		font-weight: lighter;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	}
+
+	.field.title {
+		height: 20px;
+		font-size: 15px;
+	}
+	.field {
+		margin: 0px;
+		padding-left: 2px;
+	}
+	
+	div#bio-block p, div#roles-block p {
+		margin: 0px;
+		padding-left: 5px;
+	}
+	
+	.long-info {
+		border-radius: 6px;
+		border: 3px solid ##{border_color};
+		margin: 5px;
+		height: 40px;
+		overflow: hidden;
+	}
+	
+	.long-info strong {
+		padding-left: 4px;
+	}
+	
+	div#roles-block {
+		margin-top: 0px;
+		font-size: 18px;
+		position: relative;
+		white-space: nowrap;
+		line-height: 35px;
+		text-overflow: ellipsis;
+	}
+	
+	div#bio-block {
+		margin-bottom: 0px;
+		font-size: 24px;
+		position: relative;
+		white-space: nowrap;
+		line-height: 35px;
+		text-overflow: ellipsis;
+	}
+	
+	/*p#timestamp {
+		float: right;
+		border-left: 3px solid white;
+		height: 100%;
+		font-size: 28px;
+		margin: 0px;
+		display: inline-block;
+		padding: 0px 4px;
+		line-height: 37px;
+	}*/
+	
+div(id='card')
+	div(class='block' id='avatar-block'): img(id='avatar-img' src=avatar_url)
+	div(class='block' id='name-block')
+		div(id='guild-block'): p(id='username') #{guild}
+		div(id='username-block'): p(id='guild-name') #{username}
+	div(class='block' id='info-block')
+		div(class='long-info bio' id='bio-block') <strong>Bio:</strong> #{bio}
+		ul(class='column' id='1')
+		
+			li: div(class='info' id='points')
+				div(class='field title') Points
+				div(class='field value') #{points}
+				
+			li: div(class='info' id='joined')
+				div(class='field title') Joined
+				div(class='field value') #{joined}
+				
+			li: div(class='info' id='bot')
+				div(class='field title') Bot
+				div(class='field value') #{bot}
+				
+		ul(class='column' id='2')
+			li: div(class='info' id='nickname')
+				div(class='field title') Nickname
+				div(class='field value') #{nickname}
+				
+			li: div(class='info' id='Permissions')
+				div(class='field title') Permissions
+				div(class='field value') #{permissions}
+				
+			li: div(class='info' id='Joined Discord')
+				div(class='field title') Joined Discord
+				div(class='field value') #{joined_discord}
+				
+		ul(class='column' id='3')
+			li: div(class='info' id='presence')
+				div(class='field title') Presence
+				div(class='field value') #{presence}
+			li: div(class='info' id='playing_status')
+				div(class='field title') Playing status
+				div(class='field value') #{playing_status}
+			li: div(class='info' id='mutal_servers')
+				div(class='field title') Mutal servers
+				div(class='field value') #{mutual_servers}
+
+		div(class='long-info roles' id='roles-block') <strong>Roles[#{role_count}]:</strong> #{roles}

@@ -2,6 +2,8 @@ module.exports = {
 	prefix:"s!",
 	admin: ["ID of an admin", "Second admin?"],
 	token: "TOKEN_HERE",
+	
+	//If disabled, the bots invite link is private
 	show_invite: false,
 	
 	//Token from discordbots.org
@@ -25,5 +27,10 @@ module.exports = {
 	voice_passes: 1,
 	
 	//Logging
-	logChannel: false //This gets changed to a channel at ready
+	logChannel: false,//ID
+	logFile: 'log.txt', //false to disable
+	
+	//Image API
+	image_api: false,
+	port: 3000
 }

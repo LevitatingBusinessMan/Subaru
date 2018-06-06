@@ -1,0 +1,36 @@
+doctype html
+
+style.
+
+	@font-face {
+		font-family: fjalla-one;
+		src: url('http://localhost:3000/fonts/FjallaOne-Regular.ttf');
+	}
+
+	.image {
+		float: left;
+		margin: 20px;
+	}
+	
+	.image img {
+		width: 300px;
+		height: 200px;
+		display: inline-block;
+		border-radius: 10px;
+	}
+	
+	.image p {
+		margin: 0px;
+		text-align: center;
+		font-size: 34px;
+		font-family: fjalla-one;
+		color: #fff;
+	}
+
+div(class='img_wrapper' style="width: 1020px;")
+
+	-
+	each bg in backgrounds
+		div(class='image')
+			img(src='http://localhost:3000/backgrounds/' + bg)
+			p= bg.split('.')[0]

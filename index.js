@@ -78,8 +78,24 @@ if (foo == events.length) Subaru.log('OK', 'All events loaded!')
 	
 Subaru.log('ok', `Loaded ${Subaru.GUILDS.size} guilds from DB!`);
 Subaru.log('ok', `Loaded ${Subaru.USERS.size} users from DB!`);
-	
-callback();
+
+//Puppeteer browser
+if (Subaru.config.image_api) {
+	//For fonts and images
+	let express = require('express');
+	let app = express();
+	app.use(express.static('./util/assets'));
+	app.listen(Subaru.config.port);
+	Subaru.log('ok', `Started web server on: ${Subaru.config.port}`)
+
+	let pup = require('puppeteer');
+	pup.launch({headless:true}).then(browser => {
+		Subaru.browser = browser;
+		Subaru.log('ok', 'Puppeteer browser created!');
+		callback();
+	}).catch(err => {throw err});
+} else callback();
+
 };
 
 init(() => {
