@@ -5,15 +5,12 @@ module.exports = { run : Subaru => {
 	
 	for (let i=0; APIs.length > i; i++){
 		if (!Subaru.config[APIs[i]]){
-		console.log(APIs[i]);
 		let DisabledCommands = new Array;
 		for (let property in Subaru.cmd){
 			let cmd = Subaru.cmd[property];
 			if (cmd.require) {
-				if (cmd.require.includes(APIs[i])) {
-					DisabledCommands.push(cmd.name);
-					Subaru.cmd[property].disabled = true;
-				}
+				if (cmd.require.includes(APIs[i])) DisabledCommands.push(cmd.name);
+				Subaru.cmd[property].disabled = true;
 			}
 		}
 		Subaru.log("warn", APIs[i] + " missing. Disabled commands: " + DisabledCommands.join(", "));

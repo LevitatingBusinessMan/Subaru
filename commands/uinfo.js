@@ -1,28 +1,26 @@
  module.exports = {
 	name: 'uinfo',
 	catagory: 'General',
-	description:'Displays info about a user in an image, to get an embed use the -t argument',
+	description:'Displays some juicy info about a user',
 	usage:'uinfo name/mention/id',
 	
 	run : async (Subaru, client, args, message) => {
 		try {
-			
-			if (args.filter(x => x != '-t')[0]) var user = Subaru.getUser(args.filter(x => x != '-t')[0], message.guild.members); else var user = message.guild.members.get(message.author.id);
+			if (args[0]) var user = Subaru.getUser(args[0], message.guild.members); else var user = message.guild.members.get(message.author.id);
 			if (!user) {Subaru.respond(message, 'User not found');return;}
 			
-			//Count mutual servers
-			let mutualGuilds = 0;
+			//Count mutal servers
+			let mutalGuilds = 0;
 			Subaru.client.guilds.map(x => x.members).forEach(x => {
-				if (x.get(user.id)) mutualGuilds++;
+				if (x.get(user.id)) mutalGuilds++;
 			});
 			
 			//Handle guys that are not in the DB
 			if (Subaru.USERS.get(user.id)) {
 				var DBuser = Subaru.USERS.get(user.id);
-				if (Subaru.USERS.get(user.id).profile.bio) var bio = Subaru.USERS.get(user.id).profile.bio;
+				if (Subaru.USERS.get(user.id).bio) var bio = Subaru.USERS.get(user.id).bio;
 			}
 			
-			if (args.includes('-t') || !Subaru.config.image_api)
 			Subaru.respond(message, {embed:{
 				title: user.user.tag + (message.guild.owner == user ? ":crown:" : ""),
 				description: user.user.id,
@@ -49,8 +47,8 @@
 					value: user.permissions.bitfield,
 					inline: true
 				},{
-					name: "mutual servers:",
-					value: mutualGuilds,
+					name: "Mutal servers:",
+					value: mutalGuilds,
 					inline: true
 				},{
 					name: "Joined Discord:",
