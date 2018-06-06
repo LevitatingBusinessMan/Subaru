@@ -16,13 +16,15 @@ module.exports = (Subaru) => {
 				x.addDestructor = (id) => {
 					if (!id) return 'No author given';
 					x.react('🗑');
-					x.authorID = id;
+					x.authorID = message.author.id;
+					//x.authorID = id;
 					Subaru.destructors.set(x.id, x);
 				};
 				x.addConfirm = (id) => {
 					if (!id) return 'No author given';
 					x.react('✅').then(() => x.react('❌'));
-					x.authorID = id;
+					x.authorID = message.author.id;
+					//x.authorID = id;
 					return new Promise((resolve, reject) =>{
 						x.resolve = resolve;
 						x.reject = reject;
@@ -30,7 +32,7 @@ module.exports = (Subaru) => {
 					});
 				}
 			resolve(x);})
-			.catch(err => {message.channel.send('An error occured :v'); reject("\nAt: " + message.content + '\n' + err);})
+			.catch(err =>  reject("\nAt: " + message.content + '\n' + err))
 			});
 		}
 		
@@ -62,18 +64,33 @@ module.exports = (Subaru) => {
 				id: user.id,
 				username: user.username,
 				afk: false,
-				bio: false,
-				points: 0,
-				ownedBy: false,
-				Waifus: [],
-				Waifubets: [],
-				WaifuOnUserBets: [],
-				daily: false
+				points: 500, //starter
+				daily: false,
+				profile: {
+					bg: 'default',
+					text_color: '000',
+					border_color: 'fff',
+					bio: false
+				}
 			}
 			if (!Subaru.USERS.get(user.id)) resolve(Subaru.USERS.setAsync(user.id, doc))
 				.catch(err => {Subaru.log('err', 'Error adding user to DB: \n' + err);resolve('Error!');});
 			else resolve(Subaru.USERS);
 		});}
+		
+		Subaru.console = '= Startup ' + new Date() + ' =\n\n';
+		
+		console.log = (d) => {
+			Subaru.console += (d + '\n').replace(/(.\[[0-9]+m)/g,'');
+			process.stdout.write(d + '\n');
+			let fs = require('fs-extra');
+			
+			if (fs.existsSync(`./${Subaru.config.logFile}`))
+				Subaru.previous_log = fs.readFile(`./${Subaru.config.logFile}`);
+			
+			if (Subaru.config.logFile)
+				require('fs-extra').writeFile(`./${Subaru.config.logFile}`, Subaru.console);
+		}
 		
 		//Shamelessly stolen from Paradox
 		Subaru.sleep = (ms) => {
@@ -110,6 +127,10 @@ module.exports = (Subaru) => {
 		//Events
 		process.on('unhandledRejection', err => {
 			Subaru.log('warn', `Unhandled Promise Rejection: ${err}`);
+		});
+		
+		process.on('exit', () => {
+			//Subaru.log('err', 'Process crashed');
 		});
 		
 	} catch (err) {

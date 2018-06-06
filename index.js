@@ -78,8 +78,9 @@ if (foo == events.length) Subaru.log('OK', 'All events loaded!')
 	
 Subaru.log('ok', `Loaded ${Subaru.GUILDS.size} guilds from DB!`);
 Subaru.log('ok', `Loaded ${Subaru.USERS.size} users from DB!`);
-	
+
 callback();
+
 };
 
 init(() => {
